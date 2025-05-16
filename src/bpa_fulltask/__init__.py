@@ -1,0 +1,1 @@
+from .send_email import send_email_with_the_generated_attachment_via_mailersend
