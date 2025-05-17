@@ -17,16 +17,16 @@ from bpa_fulltask import send_email_with_the_generated_attachment_via_mailersend
 #     )
 
 
-def main_mailer_api() -> None:
-    client = MailerSendAPIWrapper1()
+# def main_mailer_api() -> None:
+#     client = MailerSendAPIWrapper1()
 
-    client.send_email(        
-        recipient_email=constants.TO_EMAIL,
-        recipient_name=constants.TO_NAME,
-        subject=constants.SUBJECT,
-        plain_text=constants.PLAIN_BODY,
-        html_text=constants.HTML_BODY
-    )
+#     client.send_email(        
+#         recipient_email=constants.TO_EMAIL,
+#         recipient_name=constants.TO_NAME,
+#         subject=constants.SUBJECT,
+#         plain_text=constants.PLAIN_BODY,
+#         html_text=constants.HTML_BODY
+#     )
 
 def main_mailer_api2() -> None:
     client = MailerSendAPIWrapper1()
@@ -42,30 +42,29 @@ def main_mailer_api2() -> None:
     )
 
 
-def main_outlook_email_sender() -> None:
-    email_sender = OutlookEmailSender(
-        client_id=constants.CLIENT_ID,
-        client_secret_value=constants.CLIENT_MYSECRETKEY_VALUE,
-        tenant_id=constants.TENANT_ID,
-        scopes=constants.SCOPES
-    )
+# def main_outlook_email_sender() -> None:
+#     email_sender = OutlookEmailSender(
+#         client_id=constants.CLIENT_ID,
+#         client_secret_value=constants.CLIENT_MYSECRETKEY_VALUE,
+#         tenant_id=constants.TENANT_ID,
+#         scopes=constants.SCOPES
+#     )
 
-    token = email_sender.acquire_token()
+#     token = email_sender.acquire_token()
 
-    if token:
-        payload = email_sender.create_email_payload(
-            to_address=constants.TO_ADDRESS,
-            subject=constants.SUBJECT,
-            body=constants.BODY,
-            attachment_path=constants.ATTACHMENT_PATH
-        )
+#     if token:
+#         payload = email_sender.create_email_payload(
+#             to_address=constants.TO_ADDRESS,
+#             subject=constants.SUBJECT,
+#             body=constants.BODY,
+#             attachment_path=constants.ATTACHMENT_PATH
+#         )
 
-        email_sender.send_email(access_token=token, payload=payload, endpoint=constants.MICROSOFT_GRAPH_API_ENDPOINT)
-    else:
-        print("[FAILURE] No token available. Email not sent.")
+#         email_sender.send_email(access_token=token, payload=payload, endpoint=constants.MICROSOFT_GRAPH_API_ENDPOINT)
+#     else:
+#         print("[FAILURE] No token available. Email not sent.")
 
 
-if __name__ == "__main__":
-    # main_outlook_email_sender()
+if __name__ == "__main__":    
     # main_mailer_api2()
     send_email_with_the_generated_attachment_via_mailersend(constants.AttachmentDisposition.ATTACHMENT)
